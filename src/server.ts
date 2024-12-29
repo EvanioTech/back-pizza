@@ -11,8 +11,16 @@ app.use(router);
 // Middleware de erro global
 // A assinatura correta do middleware de erro
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  console.error(err);
-  return res.status(500).json({ error: 'Internal server error' });
+  if (err instanceof Error) {
+    return res.status(400).json({
+      error: err.message,
+    });
+  }
+
+  return res.status(500).json({
+    status: 'error',
+    message: 'Internal Server Error',
+  });
 });
 
 
