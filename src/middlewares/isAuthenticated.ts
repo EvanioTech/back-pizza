@@ -22,6 +22,10 @@ const [, token] = authToken.split(" ");
 try {
     const { sub } = verify(token, process.env.JWT_SECRET) as Payload;
 
+
+    //recuperar informações do usuário e colocar numa variavel
+    req.user_id = sub;
+
     return next();  
 
     

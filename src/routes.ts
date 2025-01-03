@@ -5,7 +5,7 @@ import { DetailUserController } from "./controllers/user/DetailUserController";
 
 import { isAuthenticated } from "./middlewares/isAuthenticated";
 
-
+// ROTAS USER
 
 const router = Router();
 // rotas User
@@ -14,6 +14,9 @@ router.post("/users", new CreateUserController().handle);
 router.post("/session", new AuthUserController().handle);
 // rota detalhes do usuario
 router.get("/me", isAuthenticated, new DetailUserController().handle);
+
+// ROTAS CATEGORY
+
 
 
 
