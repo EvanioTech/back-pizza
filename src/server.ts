@@ -2,6 +2,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import 'express-async-errors'; // Para capturar erros em funções assíncronas
 import cors from 'cors';
 import router from './routes';
+import path from 'path'
 
 
 const app = express();
@@ -11,6 +12,11 @@ app.use(cors());
 
 
 app.use(router);
+
+app.use(
+  './files',
+  express.static(path.resolve(__dirname, '..', 'tmp'))
+)
 
 // Middleware de erro global
 // A assinatura correta do middleware de erro
